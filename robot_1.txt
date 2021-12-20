@@ -1,0 +1,66 @@
+Development
+Testing
+
+Robot Framework
+- test tool / test automation framework
+- used for acceptance testing
+- follows keyword driven style - test cases are written using keywords
+- Web Automation, API, RPA, Database Testing
+- built on Python and runs on Jython(JVM) and IronPython (.net)
+- support lot of libraries
+
+
+Main Components of Robot
+- Settings
+  - import libraries and variable files and resource files
+- Variables
+  - define varibles to reuse them
+- Keywords
+  - could be pre-defined or user-defined and we use them to perform task
+  - keywords are like functions, where we can pass arguments and they return something
+- Tasks
+  - the work that robot has to do, it is just a collection of keywords
+
+
+*** Settings ***
+Documentation	Welcome to Robot Framework
+Library		RPA.Browser.Selenium
+
+*** Variables ***
+${URL} = https://www.something.com
+
+*** Keywords ***
+Open The Website
+	Open Available Browser	  ${URL}
+
+*** Keywords ***
+Log In
+	Input Text	username	ravi
+	Input Password	password	ravi123
+	Submit Form
+
+*** Tasks ***
+Open the website and log in
+	Open The Website
+	Log In
+
+=========================================================
+Installation
+- pip install robotframework
+- pip install robotframework-seleniumlibrary
+
+Add plugins in Pycharm
+- robot framework support
+- intellibot
+
+
+
+
+
+
+
+
+
+
+
+
