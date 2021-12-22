@@ -1,0 +1,61 @@
+HTML
+- Tags (p, a, div, h1,h2...h6, form, table, input)
+  - Attributes (id, class, name, type)
+
+Selectors
+id - #
+class - .
+tag_name
+
+<input type="email" id="email" name="email" class="box">
+<input type="text" id="name" name="name" class="box">
+<input type="password" id="pwd" name="pass" class="box">
+
+input {
+	will pick all 3 tags
+}
+input[type="text"] {
+	will pick all text box
+}
+#pwd {
+	will pick all password box
+}
+.box {
+	will pick all 3 tags
+}
+
+
+Locating By XPath
+//tagname[@attribute='value']
+
+//a[@title="something"]
+
+
+/html/body/div[1]/div[2]/div[1]/div/div/div/div[2]/div/div[1]/form/div[3]/a
+
+Absolute XPath
+/html/body/div[1]/div[2]/div[1]/div/div/div/div[2]/div/div[1]/form/div[5]/a
+
+Relative XPath
+//*[@id="u_0_2_Tl"]
+
+
+Different ways to write xpath
+- Basic
+  //*[@id="u_0_2_Tl"]
+  //input[@name='email']
+
+- Contains
+  //*[contains(@class,'name')]
+
+- use and & or
+  //input[@name='email' or @class='something']
+
+- starts-with
+  //input[starts-with(@name='h')]
+
+- text
+  //a[text()='Forgetten Password']
+
+- using index
+  //input[@type="text"][3]

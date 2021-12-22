@@ -1,0 +1,81 @@
+There are various strategies to locate elements in a page. You can use the most appropriate one for your case. Selenium provides the following methods to locate elements in a page:
+find_element_by_id
+find_element_by_name
+find_element_by_xpath
+find_element_by_link_text
+find_element_by_partial_link_text
+find_element_by_tag_name
+find_element_by_class_name
+find_element_by_css_selector
+
+To find multiple elements (these methods will return a list):
+find_elements_by_name
+find_elements_by_xpath
+find_elements_by_link_text
+find_elements_by_partial_link_text
+find_elements_by_tag_name
+find_elements_by_class_name
+find_elements_by_css_selector
+
+
+<html>
+ <body>
+  <form id="loginForm">
+   <input name="username" type="text" />
+   <input name="password" type="password" />
+   <input name="continue" type="submit" value="Login" />
+  </form>
+ </body>
+<html>
+
+1. Locating by Id
+login_form = driver.find_element_by_id('loginForm')
+
+2. Locating by Name
+username = driver.find_element_by_name('username')
+password = driver.find_element_by_name('password')
+
+3. Locating by XPath
+XPath is the language used for locating nodes in an XML document. As HTML can be an implementation of XML (XHTML), Selenium users can leverage this powerful language to target elements in their web applications. XPath extends beyond (as well as supporting) the simple methods of locating by id or name attributes, and opens up all sorts of new possibilities such as locating the third checkbox on the page.
+One of the main reasons for using XPath is when you don’t have a suitable id or name attribute for the element you wish to locate.
+The form elements can be located like this:
+login_form = driver.find_element_by_xpath("/html/body/form[1]")
+login_form = driver.find_element_by_xpath("//form[1]")
+login_form = driver.find_element_by_xpath("//form[@id='loginForm']")
+
+1. Absolute path (would break if the HTML was changed only slightly)
+2. First form element in the HTML
+3. The form element with attribute named id and the value loginForm
+
+The username element can be located like this:
+username = driver.find_element_by_xpath("//form[input/@name='username']")
+username = driver.find_element_by_xpath("//form[@id='loginForm']/input[1]")
+username = driver.find_element_by_xpath("//input[@name='username']")
+
+1. First form element with an input child element with attribute named name and the value username
+2. First input child element of the form element with attribute named id and the value loginForm
+3. First input element with attribute named ‘name’ and the value username
+
+
+4. Locating Hyperlinks by Link Text
+For instance, consider this page source:
+<html>
+ <body>
+  <p>Are you sure you want to do this?</p>
+  <a href="continue.html">Continue</a>
+  <a href="cancel.html">Cancel</a>
+</body>
+<html>
+
+The html link can be located like this:
+continue_link = driver.find_element_by_link_text('Continue')
+continue_link = driver.find_element_by_partial_link_text('Conti')
+
+5. Locating Elements by Tag Name
+heading1 = driver.find_element_by_tag_name('h1')
+
+6. Locating Elements by Class Name
+content = driver.find_element_by_class_name('content')
+
+7. Locating Elements by CSS Selectors
+content = driver.find_element_by_css_selector('p.content')

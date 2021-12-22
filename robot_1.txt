@@ -20,6 +20,7 @@ Main Components of Robot
   - keywords are like functions, where we can pass arguments and they return something
 - Tasks
   - the work that robot has to do, it is just a collection of keywords
+- Test Cases
 
 
 *** Settings ***
