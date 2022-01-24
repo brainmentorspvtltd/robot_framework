@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 4.1.3 (Python 3.9.7 on win32)" generated="20220124 16:41:58.795" rpa="false" schemaversion="2">
+<suite id="s1" name="GetReqTest" source="C:\Users\ASUS\PycharmProjects\RobotTraining\API_Testing\GetReqTest.robot">
+<test id="s1-t1" name="Testing Weather API Get Request">
+<kw name="Get Response">
+<kw name="GET" library="RequestsLibrary">
+<var>${response}</var>
+<arg>${PATH}</arg>
+<arg>expected_status=200</arg>
+<doc>Sends a GET request.</doc>
+<msg timestamp="20220124 16:41:59.884" level="INFO">GET Request : url=https://api.openweathermap.org/data/2.5/weather?q=delhi&amp;appid=83e01e3dce5d28839bb5a177cb51af12 
+ path_url=/data/2.5/weather?q=delhi&amp;appid=83e01e3dce5d28839bb5a177cb51af12 
+ headers={'User-Agent': 'python-requests/2.27.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg timestamp="20220124 16:41:59.884" level="INFO">GET Response : url=https://api.openweathermap.org/data/2.5/weather?q=delhi&amp;appid=83e01e3dce5d28839bb5a177cb51af12 
+ status=200, reason=OK 
+ headers={'Server': 'openresty', 'Date': 'Mon, 24 Jan 2022 11:12:01 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '457', 'Connection': 'keep-alive', 'X-Cache-Key': '/data/2.5/weather?q=delhi', 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Credentials': 'true', 'Access-Control-Allow-Methods': 'GET, POST'} 
+ body={"coord":{"lon":77.2167,"lat":28.6667},"weather":[{"id":701,"main":"Mist","description":"mist","icon":"50d"}],"base":"stations","main":{"temp":288.2,"feels_like":287.9,"temp_min":288.2,"temp_max":288.2,"pressure":1013,"humidity":82},"visibility":1800,"wind":{"speed":1.54,"deg":320},"clouds":{"all":75},"dt":1643022220,"sys":{"type":1,"id":9165,"country":"IN","sunrise":1642988578,"sunset":1643026979},"timezone":19800,"id":1273294,"name":"Delhi","cod":200} 
+ </msg>
+<msg timestamp="20220124 16:41:59.884" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20220124 16:41:58.873" endtime="20220124 16:41:59.884"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${response.json()}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20220124 16:41:59.885" level="INFO">{'coord': {'lon': 77.2167, 'lat': 28.6667}, 'weather': [{'id': 701, 'main': 'Mist', 'description': 'mist', 'icon': '50d'}], 'base': 'stations', 'main': {'temp': 288.2, 'feels_like': 287.9, 'temp_min': 288.2, 'temp_max': 288.2, 'pressure': 1013, 'humidity': 82}, 'visibility': 1800, 'wind': {'speed': 1.54, 'deg': 320}, 'clouds': {'all': 75}, 'dt': 1643022220, 'sys': {'type': 1, 'id': 9165, 'country': 'IN', 'sunrise': 1642988578, 'sunset': 1643026979}, 'timezone': 19800, 'id': 1273294, 'name': 'Delhi', 'cod': 200}</msg>
+<status status="PASS" starttime="20220124 16:41:59.885" endtime="20220124 16:41:59.885"/>
+</kw>
+<kw name="Status Should Be" library="RequestsLibrary">
+<arg>200</arg>
+<doc>Fails if response status code is different than the expected.</doc>
+<status status="PASS" starttime="20220124 16:41:59.885" endtime="20220124 16:41:59.885"/>
+</kw>
+<kw name="Dictionary Should Contain Key" library="Collections">
+<arg>${response.json()}</arg>
+<arg>name</arg>
+<doc>Fails if ``key`` is not found from ``dictionary``.</doc>
+<status status="PASS" starttime="20220124 16:41:59.885" endtime="20220124 16:41:59.886"/>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<arg>Delhi</arg>
+<arg>${response.json()}[name]</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" starttime="20220124 16:41:59.886" endtime="20220124 16:41:59.886"/>
+</kw>
+<status status="PASS" starttime="20220124 16:41:58.873" endtime="20220124 16:41:59.886"/>
+</kw>
+<status status="PASS" starttime="20220124 16:41:58.873" endtime="20220124 16:41:59.887"/>
+</test>
+<doc>Suite description</doc>
+<status status="PASS" starttime="20220124 16:41:58.797" endtime="20220124 16:41:59.887"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="GetReqTest">GetReqTest</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
